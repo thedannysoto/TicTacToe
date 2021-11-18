@@ -9,7 +9,6 @@ let firstPlayer = true;
 
 function takeTurn () {
     if (this.innerHTML == "") {
-        // this.innerHTML = firstPlayer ? 'X': "O";
         if (firstPlayer) {
             this.innerHTML = 'X';
             this.classList.add('player_one');
