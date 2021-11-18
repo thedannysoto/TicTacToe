@@ -21,6 +21,7 @@ function takeTurn () {
         let winCheck = isWinner();
         if (winCheck) {
             console.log(`${boxes[winCheck[0]]} wins!`);
+            greenWinner(winCheck);
             removeListeners();
         } else if (isTie()) {
             console.log('Tie Game!');
@@ -32,8 +33,6 @@ function takeTurn () {
 }
 
 function isWinner() {
-
-    // change to arrays like : [1, 2, 3], [4, 5, 6], etc.
     const winnerArrays = [
         [0, 1, 2],
         [3, 4, 6],
@@ -46,7 +45,6 @@ function isWinner() {
     ];
 
     for (let x = 0; x < winnerArrays.length; x++) {
-        // change to : if (boxes[winnerArrays[x][0]] != '') etc
         if (boxes[(winnerArrays[x][0])] != '') {
             if (boxes[(winnerArrays[x][0])] == boxes[(winnerArrays[x][1])] &&
                 boxes[(winnerArrays[x][1])] == boxes[(winnerArrays[x][2])]) {
@@ -56,6 +54,10 @@ function isWinner() {
     }
     return false;
 }
+
+// This will hold the 'X's and 'O's
+const boxes = ['', '', '', '', '', '', '', '', ''];
+
 
 function isTie() {
     for (let x = 1; x < 10; x++) {
@@ -73,5 +75,9 @@ function removeListeners() {
     }
 }
 
-// This will hold the 'X's and 'O's
-const boxes = ['', '', '', '', '', '', '', '', ''];
+function greenWinner(array) {
+    for (let x = 0; x < 3; x++) {
+        let square = this.document.getElementById(`${(array[x] + 1).toString()}`);
+        square.classList.add("winner");
+    }
+}
