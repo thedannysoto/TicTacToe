@@ -9,9 +9,15 @@ let firstPlayer = true;
 
 function takeTurn () {
     if (this.innerHTML == "") {
-        this.innerHTML = firstPlayer ? 'X': "O";
+        // this.innerHTML = firstPlayer ? 'X': "O";
+        if (firstPlayer) {
+            this.innerHTML = 'X';
+            this.classList.add('player_one');
+        } else {
+            this.innerHTML = 'O';
+            this.classList.add('player_two');
+        }
         boxes[parseInt(this.id)] = this.innerHTML;
-        console.log(boxes[1]);
         let winCheck = isWinner();
         if (winCheck) {
             console.log(`${winCheck} wins!`);
