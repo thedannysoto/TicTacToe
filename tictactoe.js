@@ -17,10 +17,10 @@ function takeTurn () {
             this.innerHTML = 'O';
             this.classList.add('player_two');
         }
-        boxes[parseInt(this.id)] = this.innerHTML;
+        boxes[(parseInt(this.id)-1)] = this.innerHTML;
         let winCheck = isWinner();
         if (winCheck) {
-            console.log(`${winCheck} wins!`);
+            console.log(`${boxes[winCheck[0]]} wins!`);
             removeListeners();
         } else if (isTie()) {
             console.log('Tie Game!');
@@ -32,22 +32,25 @@ function takeTurn () {
 }
 
 function isWinner() {
+
+    // change to arrays like : [1, 2, 3], [4, 5, 6], etc.
     const winnerArrays = [
-        [boxes[1], boxes[2], boxes[3]],
-        [boxes[4], boxes[5], boxes[6]],
-        [boxes[7], boxes[8], boxes[9]],
-        [boxes[1], boxes[4], boxes[7]],
-        [boxes[2], boxes[5], boxes[8]],
-        [boxes[3], boxes[6], boxes[9]],
-        [boxes[1], boxes[5], boxes[9]],
-        [boxes[3], boxes[5], boxes[7]]
+        [0, 1, 2],
+        [3, 4, 6],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
     ];
 
     for (let x = 0; x < winnerArrays.length; x++) {
-        if (winnerArrays[x][0] != '') {
-            if (winnerArrays[x][0] == winnerArrays[x][1] &&
-                winnerArrays[x][1] == winnerArrays[x][2]) {
-                    return winnerArrays[x][0];
+        // change to : if (boxes[winnerArrays[x][0]] != '') etc
+        if (boxes[(winnerArrays[x][0])] != '') {
+            if (boxes[(winnerArrays[x][0])] == boxes[(winnerArrays[x][1])] &&
+                boxes[(winnerArrays[x][1])] == boxes[(winnerArrays[x][2])]) {
+                    return winnerArrays[x];
                 }
         }
     }
@@ -70,14 +73,5 @@ function removeListeners() {
     }
 }
 
-let boxes = {
-    1: '',
-    2: '',
-    3: '',
-    4: '',
-    5: '',
-    6: '',
-    7: '',
-    8: '',
-    9: ''
-}
+// This will hold the 'X's and 'O's
+const boxes = ['', '', '', '', '', '', '', '', ''];
