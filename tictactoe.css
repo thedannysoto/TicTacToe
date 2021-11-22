@@ -5,6 +5,14 @@
     font-family: 'Russo One', sans-serif;
 }
 
+.players {
+    display: flex;
+    color: white;
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    width: 600px;
+}
+
 .game-board {
     width: 600px;
     height: 600px;
