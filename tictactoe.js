@@ -1,13 +1,32 @@
-window.addEventListener('load', function () {
+window.addEventListener('load', gameSetup);
+
+function gameSetup() {
+
     for (let x = 1; x < 10; x++) {
         let square = this.document.getElementById(`${x.toString()}`);
         square.addEventListener('click', takeTurn);
     }
-})
+    let button = this.document.getElementById('reset');
+    button.addEventListener('click', resetBoard);
+}
 
 let firstPlayer = true;
 
+function resetBoard() {
+    for (let x = 1; x < 10; x++) {
+        let square = window.document.getElementById(`${x.toString()}`);
+        square.innerHTML = "";
+        square.classList.remove("player_one");
+        square.classList.remove("player_two");
+        square.classList.remove("winner");
+        boxes[x-1] = '';
+    }
+    firstPlayer = true;
+    gameSetup();
+}
+
 function takeTurn () {
+    console.log("turn");
     if (this.innerHTML == "") {
         if (firstPlayer) {
             this.innerHTML = 'X';
