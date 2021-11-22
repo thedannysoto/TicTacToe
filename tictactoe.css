@@ -5,12 +5,36 @@
     font-family: 'Russo One', sans-serif;
 }
 
+.new_game {
+    text-align: center;
+}
+
+.reset {
+    background-color: #34495e;
+    color: white;   
+    font-family: 'Russo One', sans-serif;
+    font-size: 24px;
+    border-radius: 8px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.reset:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
 .players {
     display: flex;
     color: white;
     text-align: center;
     font-family: 'Russo One', sans-serif;
     width: 600px;
+    justify-content: space-between;
+    margin: auto;
 }
 
 .game-board {
